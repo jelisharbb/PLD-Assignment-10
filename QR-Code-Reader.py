@@ -15,18 +15,19 @@
 
 """ Generate a QR Code that contains the personal data stored in a text file. """
 
+# import qrcode library
 import qrcode
 
-qr = qrcode.QRCode(
-    version = 1, 
-    error_correction = qrcode.constants.ERROR_CORRECT_L, 
-    box_size = 10, 
-    border = 4
-    )
-qr.add_data("Personal-Data.txt")
-qr.make(fit = True)
-img = qr.make_image(fill_color = "black", back_color = "maroon")
-img.save("QRCode.png")
+# customizes the QR code
+qr_code = qrcode.QRCode(
+    version = 1, # create a 21x21 matrix QR code
+    error_correction = qrcode.constants.ERROR_CORRECT_L, # controls the error correction up to 7% used for the QR code
+    box_size = 10, # controls the number of pixels in each box of the QR code
+    border = 4) # controls the thickness of the border
+qr_code.add_data("Personal-Data.txt") # stores data in the QR code
+qr_code.make(fit = True)
+image = qr_code.make_image(fill_color = "black", back_color = "brown") # customizes the color of the QR code
+image.save("QRCode.png") # generates the QR code
 
 
 """ Reads the QR Code through web camera then displays the data stored in it. """
