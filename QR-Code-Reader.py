@@ -13,15 +13,22 @@
 # 	- Create a demo of your program (1-2 min) and send it directly to my messenger.
 
 
-""" Generate QR Code that contains the personal data stored in a text file. """
+""" Generate a QR Code that contains the personal data stored in a text file. """
 
-# import qrcode library
 import qrcode
 
-# open and read the text file
-with open('Personal-Data.txt') as personalData:
-    data = personalData.read()
+qr = qrcode.QRCode(
+    version = 1, 
+    error_correction = qrcode.constants.ERROR_CORRECT_L, 
+    box_size = 10, 
+    border = 4
+    )
+qr.add_data("Personal-Data.txt")
+qr.make(fit = True)
+img = qr.make_image(fill_color = "black", back_color = "maroon")
+img.save("QRCode.png")
 
-# generate QR code
-QRCode = qrcode.make(data)
-QRCode.save('QRCode.jpg')
+
+""" Reads the QR Code through web camera then displays the data stored in it. """
+
+import cv2
