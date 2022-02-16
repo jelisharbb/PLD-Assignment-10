@@ -19,17 +19,60 @@
 import qrcode
 
 # customizes the QR code
-qr_code = qrcode.QRCode(
+qr = qrcode.QRCode(
     version = 1, # create a 21x21 matrix QR code
     error_correction = qrcode.constants.ERROR_CORRECT_L, # controls the error correction up to 7% used for the QR code
     box_size = 10, # controls the number of pixels in each box of the QR code
     border = 4) # controls the thickness of the border
-qr_code.add_data("Personal-Data.txt") # stores data in the QR code
-qr_code.make(fit = True)
-image = qr_code.make_image(fill_color = "black", back_color = "brown") # customizes the color of the QR code
-image.save("QRCode.png") # generates the QR code
+
+# stores the personal data details in a variable
+dataDetails = """ CONTACT TRACING FORM
+
+Personal Information
+    Full Name: Sherlock Holmes
+    Age: 21 years old
+    Date of Birth: December 1, 2000
+    Sex: Male
+    Address: 221B Baker St., London NW1 6XE, United Kingdom
+    Contact No.: 020 7395-1924
+
+Vaccination Details
+    Fully Vaccinated: Yes(/)     No( )
+    1st Dose
+        Vaccine: Pfizer-BioNTech
+        Vaccination Date: October 12, 2021
+        Vaccination Site: Royal London Hospital, Whitechapel Road
+    2nd Dose
+        Vaccine: Pfizer-BioNTech
+        Vaccination Date: November 4, 2021
+        Vaccination Site: Royal London Hospital, Whitechapel Road
+    Boostered: Yes( )     No(/)
+        Booster Shot: N/A
+        Date: N/A
+        Location: N/A
+
+Questions
+    (1) Have you traveled outside the country anytime from December 2021 until now?
+        Yes( )     No(/)
+    (2) Have you come into contact with anyone who has traveled outside your country between the period of December 2021 until now?
+        Yes( )     No(/)
+    (3) Have you come into contact with anyone who is positive for COVID-19 for the past 14 days?
+        Yes( )     No(/)
+    (4) Have you been experiencing COVID-like symptoms for the past 14 days?
+        Yes( )     No(/)
+    (5) Do you have any commorbidities?
+        Yes( )     No(/)
+
+Declaration
+    (/)  I hereby declare that all the facts mentioned above are accurate, and I take full responsibility for their accuracy. """
+
+qr.add_data(dataDetails) # stores data in the QR code
+qr.make(fit = True)
+QRCode = qr.make_image(fill_color = "black", back_color = "brown") # customizes the color of the QR code
+QRCode.save("QRCode.png") # generates the QR code
 
 
 """ Reads the QR Code through web camera then displays the data stored in it. """
 
 import cv2
+from pyzbar.pyzbar import decode
