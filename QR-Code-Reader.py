@@ -12,29 +12,19 @@
 # 	- Your source code should be in github before Feb 19
 # 	- Create a demo of your program (1-2 min) and send it directly to my messenger.
 
-
-""" Generate a QR Code that contains the personal data stored in a text file. """
-
-# import qrcode library
-import qrcode
-
-def generateQR ():
-    with open('Personal-Data.txt') as file:
-        personal_data = file.read()
-        # customizes the QR code
-        qr = qrcode.QRCode(
-            version = 1, # create a 21x21 matrix QR code
-            error_correction = qrcode.constants.ERROR_CORRECT_L, # controls the error correction up to 7% used for the QR code
-            box_size = 10, # controls the number of pixels in each box of the QR code
-            border = 4) # controls the thickness of the border
-        qr.add_data(personal_data) # stores data in the QR code
-        qr.make(fit = True)
-        QRCode = qr.make_image(fill_color = "black", back_color = "white") # customizes the color of the QR code
-        QRCode.save('QRCode.png') # generates the QR code
-
-generateQR()
-
 """ Reads the QR Code through web camera then displays the data stored in it. """
 
-import cv2
-from pyzbar import pyzbar
+import cv2; from pyzbar import pyzbar; from datetime import *
+
+def readQR ():
+    capture = cv2.VideoCapture(0)
+    while True:
+        _, image = capture.read()
+        image = cv2.resize(image, None, fx = 1.0, fy = 1.0, interpolation = cv2.INTER_AREA)
+        cv2.imshow("QR Code Scanner", image)
+        if cv2.waitKey(1) == ord('q'):
+            break
+    capture.release()
+    cv2.destroyAllWindows()
+
+readQR()
