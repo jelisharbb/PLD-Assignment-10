@@ -20,11 +20,19 @@ def readQR ():
     capture = cv2.VideoCapture(0)
     while True:
         _, image = capture.read()
-        image = cv2.resize(image, None, fx = 1.0, fy = 1.0, interpolation = cv2.INTER_AREA)
+        image = decodeQR(cv2.resize(image, None, fx = 1.0, fy = 1.0, interpolation = cv2.INTER_AREA))
         cv2.imshow("QR Code Scanner", image)
         if cv2.waitKey(1) == ord('q'):
             break
     capture.release()
     cv2.destroyAllWindows()
+
+def decodeQR (image):
+    qrCode = pyzbar.decode(image)
+    for details in qrCode:
+        qrData = details.data.decode('utf-8')
+        with open ("QR-Code-Result.txt", "w") as textfile:
+            textfile.write(qrData)
+    return image
 
 readQR()
