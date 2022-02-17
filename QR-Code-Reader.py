@@ -30,13 +30,16 @@ def readQR ():
     capture.release()
     cv2.destroyAllWindows() # this code will fully shut down the web camera
 
-# define another function that contains all the codes needed to decode the QR code
+# define another function that contains all the codes needed to decode the QR code and to record the time and date stamp
 def decodeQR (image):
     qrCode = pyzbar.decode(image) # the scanned QR code will be decoded here
+    timeDate = datetime.now()
+    date = timeDate.strftime("%B %d, %Y") # stores the exact date in this format: Month Day, Year 
+    hour = timeDate.strftime("%I:%M %p") # stores the exact hour in this format: Hour(1-12): Minute AM/PM
     for details in qrCode:
         qrData = details.data.decode('utf-8')
         with open ("QR-Code-Result.txt", "w") as textfile: 
-            textfile.write(qrData) # the decoded data will now be opened and written in a new text file
+            textfile.write(qrData + (f"\n\nDate registered: {date}\nTime registered: {hour}")) # the decoded data will now be opened and written in a new text file together with the time and date stamp
     return image
 
 # call the function to execute the reading of the QR code
