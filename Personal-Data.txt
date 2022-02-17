@@ -7,33 +7,18 @@ Personal Information
     Sex: Male
     Address: 221B Baker St., London NW1 6XE, United Kingdom
     Contact No.: 020 7395-1924
-    Email: highfunctioningsociopath@gmail.com
 
 Vaccination Details
     Fully Vaccinated: Yes(/)     No( )
     1st Dose
         Vaccine: Pfizer-BioNTech
         Vaccination Date: October 12, 2021
-        Vaccination Site: Royal London Hospital, Whitechapel Road, London E1 1BB
+        Vaccination Site: Royal London Hospital, Whitechapel Road
     2nd Dose
         Vaccine: Pfizer-BioNTech
         Vaccination Date: November 4, 2021
-        Vaccination Site: Royal London Hospital, Whitechapel Road, London E1 1BB
+        Vaccination Site: Royal London Hospital, Whitechapel Road
     Boostered: Yes( )     No(/)
         Booster Shot: N/A
         Date: N/A
         Location: N/A
-
-Questions
-    (1) Have you traveled outside the country anytime from December 2021 until now?
-        Yes( )     No(/)
-    (2) Have you come into contact with anyone who has traveled outside your country between the period of December 2021 until now?
-        Yes( )     No(/)
-    (3) Have you come into contact with anyone who is positive for COVID-19 for the past 14 days?
-        Yes( )     No(/)
-    (4) Have you been experiencing COVID-like symptoms for the past 14 days?
-        Yes( )     No(/)
-    (5) Do you have any commorbidities?
-        Yes( )     No(/)
-
-(/)  I hereby declare that all the facts mentioned above are accurate, and I take full responsibility for their accuracy. 
